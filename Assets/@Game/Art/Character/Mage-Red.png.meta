@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -4225,10 +4225,10 @@ TextureImporter:
       Mage-Red_10: -117078717
       Mage-Red_2: 1333249152
       Mage-Red_66: 1503000939
-      Mage-Red_40: -574200767
       Mage-Red_67: 1919124026
-      Mage-Red_47: 179688046
+      Mage-Red_40: -574200767
       Mage-Red_183: -1639430058
+      Mage-Red_47: 179688046
       Mage-Red_159: 186433997
       Mage-Red_36: 1735272619
       Mage-Red_106: 606686784
@@ -4308,8 +4308,8 @@ TextureImporter:
       Mage-Red_63: -468283080
       Mage-Red_111: -631877837
       Mage-Red_109: 292636691
-      Mage-Red_119: 1846527133
       Mage-Red_190: 1142821591
+      Mage-Red_119: 1846527133
       Mage-Red_137: 572209035
       Mage-Red_135: -630579239
       Mage-Red_114: -1501796142

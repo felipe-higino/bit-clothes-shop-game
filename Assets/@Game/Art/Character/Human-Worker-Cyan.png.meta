@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -4197,13 +4197,13 @@ TextureImporter:
       Human-Worker-Cyan_121: 622523949
       Human-Worker-Cyan_136: 1887950993
       Human-Worker-Cyan_114: -2065900697
+      Human-Worker-Cyan_147: 116411674
       Human-Worker-Cyan_21: 1459595425
-      Human-Worker-Cyan_25: -1775863554
       Human-Worker-Cyan_65: -2035896105
       Human-Worker-Cyan_132: 1576566332
       Human-Worker-Cyan_47: -332407936
       Human-Worker-Cyan_134: -390151179
-      Human-Worker-Cyan_147: 116411674
+      Human-Worker-Cyan_25: -1775863554
       Human-Worker-Cyan_142: 1595962227
       Human-Worker-Cyan_180: 378372658
       Human-Worker-Cyan_164: 111765202

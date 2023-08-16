@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -4233,8 +4233,8 @@ TextureImporter:
       Archer-Purple_0: -2003824282
       Archer-Purple_47: -547931842
       Archer-Purple_1: -234839728
-      Archer-Purple_89: -183068266
       Archer-Purple_138: -1163571303
+      Archer-Purple_89: -183068266
       Archer-Purple_88: 1649527866
       Archer-Purple_124: 893930225
       Archer-Purple_97: -411539609
@@ -4253,9 +4253,9 @@ TextureImporter:
       Archer-Purple_186: 279387664
       Archer-Purple_123: -1236410427
       Archer-Purple_185: 1347054901
+      Archer-Purple_75: 1634477153
       Archer-Purple_24: -1599294123
       Archer-Purple_22: -1887511826
-      Archer-Purple_75: 1634477153
       Archer-Purple_13: -1997466047
       Archer-Purple_74: -1885319427
       Archer-Purple_16: 14137500
@@ -4284,8 +4284,8 @@ TextureImporter:
       Archer-Purple_40: -712263632
       Archer-Purple_19: -145914404
       Archer-Purple_2: -1334965004
-      Archer-Purple_168: 1727557926
       Archer-Purple_184: -1292270379
+      Archer-Purple_168: 1727557926
       Archer-Purple_29: 1368136783
       Archer-Purple_116: 1495285247
       Archer-Purple_155: 1817767102

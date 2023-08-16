@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -4216,9 +4216,9 @@ TextureImporter:
       Human-Soldier-Cyan_99: -988600107
       Human-Soldier-Cyan_8: 728241769
       Human-Soldier-Cyan_32: -1299626141
-      Human-Soldier-Cyan_105: -1631849495
-      Human-Soldier-Cyan_1: -1906941725
       Human-Soldier-Cyan_189: 1393454072
+      Human-Soldier-Cyan_1: -1906941725
+      Human-Soldier-Cyan_105: -1631849495
       Human-Soldier-Cyan_188: 2056657910
       Human-Soldier-Cyan_54: -1724608728
       Human-Soldier-Cyan_17: -1203905340
@@ -4231,9 +4231,9 @@ TextureImporter:
       Human-Soldier-Cyan_67: 1569798268
       Human-Soldier-Cyan_156: 1577293754
       Human-Soldier-Cyan_66: -1224287718
-      Human-Soldier-Cyan_130: 833806631
-      Human-Soldier-Cyan_162: -2125635884
       Human-Soldier-Cyan_174: -1214634207
+      Human-Soldier-Cyan_162: -2125635884
+      Human-Soldier-Cyan_130: 833806631
       Human-Soldier-Cyan_65: 2093117841
       Human-Soldier-Cyan_40: -1195272349
       Human-Soldier-Cyan_173: 1291477828
