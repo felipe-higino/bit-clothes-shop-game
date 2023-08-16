@@ -1,0 +1,10 @@
+{
+  "name": "com.fiiph.create-so",
+  "displayName": "Lib - Create Scriptable Object",
+  "version": "1.0.0",
+  "type": "library",
+  "author": {
+    "name": "fiiph"
+  },
+  "description": "HOW TO USE\n- press rmb in ScriptableObject Script\n- select \"Assets/Create/CREATE SCRIPTABLE OBJECT \u2665\" to create asset"
+}
