@@ -10,5 +10,11 @@ namespace Game.Scripts.Model
         }
 
         public readonly ReactiveProperty<int> cashReactive = new(0);
+        public readonly ReactiveCollection<InventoryItem> inventoryItems = new();
+    }
+
+    public class InventoryItem
+    {
+        public string itemName;
     }
 }
