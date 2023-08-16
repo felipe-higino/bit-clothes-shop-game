@@ -1,0 +1,4 @@
+animationController,setItemName,weaponItemName
+mage-character-animator,mage-set,
+soldier-character-animator,warior-set,
+archer-character-animator,archer-set,
