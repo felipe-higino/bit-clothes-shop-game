@@ -21,11 +21,5 @@ namespace Game.Scripts.Tools
                 .Subscribe(cash => _cashText.text = $"${cash}")
                 .AddTo(this);
         }
-
-        [ContextMenu("give cash")]
-        public void GiveCash()
-        {
-            _Inventory.cash += 200;
-        }
     }
 }
