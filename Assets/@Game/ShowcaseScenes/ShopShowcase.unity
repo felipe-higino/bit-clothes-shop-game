@@ -918,6 +918,8 @@ MonoBehaviour:
   _storeItemsContainer: {fileID: 484939519}
   _purchaseWidgetPrefab: {fileID: 7378756805927567756, guid: 3b718a9b2352c274cb2aac4cfd55414d, type: 3}
   _img_itemPreview: {fileID: 1963134302}
+  _txt_price: {fileID: 791075366}
+  _btn_purchase: {fileID: 1408780985}
 --- !u!1 &548198440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,6 +2037,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1408780985 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3944749141922521811, guid: de23c98160c1efc46a6970f0a1829757, type: 3}
+  m_PrefabInstance: {fileID: 1408780979}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408780981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1524195275
 GameObject:
   m_ObjectHideFlags: 0
