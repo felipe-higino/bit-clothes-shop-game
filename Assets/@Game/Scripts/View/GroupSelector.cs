@@ -4,37 +4,51 @@ namespace Game.Scripts.View
 {
     public class GroupSelector : MonoBehaviour
     {
+        public event Action<ISelectable> OnChangeSelected;
+
+        [SerializeField] bool _isInitOnStart;
+
         ISelectable[] _selectables;
-        public interface ISelectable
-        {
-            public event Action<ISelectable> OnClick;
-            public void NotifyIsSelected(bool isSelected);
-        }
+
+        public ISelectable CurrentSelected { get; private set; }
 
         void Start()
         {
+            if (_isInitOnStart)
+                Init();
+        }
+
+        public void Init()
+        {
             _selectables = GetComponentsInChildren<ISelectable>();
-            for (int i = 0; i < _selectables.Length; i++)
+            foreach (ISelectable selectable in _selectables)
             {
-                ISelectable selectable = _selectables[i];
-                selectable.OnClick += OnClick;
+                selectable.OnClick += OnClickSelectable;
                 selectable.NotifyIsSelected(false);
             }
         }
 
-        void OnClick(ISelectable clicked)
+        void OnClickSelectable(ISelectable clicked)
         {
             foreach (ISelectable selectable in _selectables)
             {
                 if (selectable == clicked)
                 {
                     selectable.NotifyIsSelected(true);
+                    CurrentSelected = clicked;
+                    OnChangeSelected?.Invoke(clicked);
                 }
                 else
                 {
                     selectable.NotifyIsSelected(false);
                 }
             }
+        }
+
+        public interface ISelectable
+        {
+            public event Action<ISelectable> OnClick;
+            public void NotifyIsSelected(bool isSelected);
         }
     }
 
