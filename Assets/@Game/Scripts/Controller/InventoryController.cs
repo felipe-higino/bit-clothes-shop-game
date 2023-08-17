@@ -28,58 +28,64 @@ namespace Game.Scripts.Controller
             inventory.inventoryItems
                 .ObserveAdd()
                 .ObserveOnMainThread()
-                .Subscribe(x =>
-                {
-                    InventoryItem item = x.Value;
-
-                    //TODO: change to a pool approach
-                    InventoryItemWidget widgetInstance = Instantiate(_inventoryWidgetPrefab, _inventoryItemsParent);
-
-                    Sprite sprite = item.itemName.SpriteFromItemName();
-                    widgetInstance.SetIcon(sprite);
-                    widgetInstance.SetState(InventoryItemWidget.State.AVAILABLE);
-
-                    _dictItemWidget.Add(item, widgetInstance);
-                    _dictWidgetItem.Add(widgetInstance, item);
-                    _inventoryGroupSelector.AddSelectable(widgetInstance);
-                })
+                .Subscribe(OnAddInventoryItem)
                 .AddTo(this);
 
             inventory.inventoryItems
                 .ObserveRemove()
                 .ObserveOnMainThread()
-                .Subscribe(x =>
-                {
-                    InventoryItem item = x.Value;
-                    _dictItemWidget.TryGetValue(item, out InventoryItemWidget widgetInstance);
-                    if (null != widgetInstance)
-                    {
-                        //TODO: change to a pool approach
-                        Destroy(widgetInstance.gameObject);
-                        _inventoryGroupSelector.RemoveSelectable(widgetInstance);
-                        _dictItemWidget.Remove(item);
-                        _dictWidgetItem.Remove(widgetInstance);
-                    }
-                })
+                .Subscribe(OnRemovedInventoryItem)
                 .AddTo(this);
 
             inventory.equippedItemReactive
                 .ObserveOnMainThread()
-                .Subscribe(equippedItem =>
-                {
-                    if (null == equippedItem)
-                    {
-                        Sprite sprite = "default".SpriteFromItemName();
-                        _defaultSet.SelectThis();
-                        _img_equippedSet.sprite = sprite;
-                    }
-                    else
-                    {
-                        Sprite sprite = equippedItem.itemName.SpriteFromItemName();
-                        _img_equippedSet.sprite = sprite;
-                    }
-                })
+                .Subscribe(OnChangeEquippedItem)
                 .AddTo(this);
+        }
+
+        void OnAddInventoryItem(CollectionAddEvent<InventoryItem> addedItem)
+        {
+            InventoryItem item = addedItem.Value;
+
+            //TODO: change to a pool approach
+            InventoryItemWidget widgetInstance = Instantiate(_inventoryWidgetPrefab, _inventoryItemsParent);
+
+            Sprite sprite = item.itemName.SpriteFromItemName();
+            widgetInstance.SetIcon(sprite);
+            widgetInstance.SetState(InventoryItemWidget.State.AVAILABLE);
+
+            _dictItemWidget.Add(item, widgetInstance);
+            _dictWidgetItem.Add(widgetInstance, item);
+            _inventoryGroupSelector.AddSelectable(widgetInstance);
+        }
+
+        void OnRemovedInventoryItem(CollectionRemoveEvent<InventoryItem> x)
+        {
+            InventoryItem item = x.Value;
+            _dictItemWidget.TryGetValue(item, out InventoryItemWidget widgetInstance);
+            if (null != widgetInstance)
+            {
+                //TODO: change to a pool approach
+                Destroy(widgetInstance.gameObject);
+                _inventoryGroupSelector.RemoveSelectable(widgetInstance);
+                _dictItemWidget.Remove(item);
+                _dictWidgetItem.Remove(widgetInstance);
+            }
+        }
+
+        void OnChangeEquippedItem(InventoryItem equippedItem)
+        {
+            if (null == equippedItem)
+            {
+                Sprite sprite = "default".SpriteFromItemName();
+                _defaultSet.SelectThis();
+                _img_equippedSet.sprite = sprite;
+            }
+            else
+            {
+                Sprite sprite = equippedItem.itemName.SpriteFromItemName();
+                _img_equippedSet.sprite = sprite;
+            }
         }
 
         void OnDestroy()
