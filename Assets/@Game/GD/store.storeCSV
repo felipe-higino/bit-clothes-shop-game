@@ -1,6 +1,6 @@
 itemName,price,itemType
 mage-set,300,SET
-warior-set,400,SET
+soldier-set,400,SET
 archer-set,350,SET
 sword,100,WEAPON
 staff,200,WEAPON

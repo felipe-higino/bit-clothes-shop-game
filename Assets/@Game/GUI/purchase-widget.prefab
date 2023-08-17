@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrow: {fileID: 2675692960648697425}
+  _img_icon: {fileID: 6060461266306390530}
   _txt_itemName: {fileID: 6060461265860794673}
 --- !u!114 &3188435408523163860
 MonoBehaviour:
