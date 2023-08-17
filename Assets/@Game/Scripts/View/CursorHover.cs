@@ -4,17 +4,18 @@ namespace Game.Scripts.View
 {
     public class CursorHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
+        void OnDisable()
+        {
+            CursorManager.Instance.NotifyFinishHover(this);
+        }
+
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (!enabled)
-                return;
             CursorManager.Instance.NotifyHover(this);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (!enabled)
-                return;
             CursorManager.Instance.NotifyFinishHover(this);
         }
     }

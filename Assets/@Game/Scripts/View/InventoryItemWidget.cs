@@ -2,10 +2,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 namespace Game.Scripts.View
 {
     public class InventoryItemWidget : MonoBehaviour, GroupSelector.ISelectable, IPointerClickHandler
@@ -16,7 +12,7 @@ namespace Game.Scripts.View
         [SerializeField] Image _img_icon;
         [SerializeField] Image _img_locker;
 
-        State _currentState = State.UNKNOWN;
+        [SerializeField] State _currentState = State.UNKNOWN;
 
         public Action<GroupSelector.ISelectable> OnSelectThis { get; set; }
 
@@ -24,6 +20,8 @@ namespace Game.Scripts.View
         {
             switch (state)
             {
+                case State.UNKNOWN:
+                    break;
                 case State.EMPTY:
                     StateEmpty();
                     break;
@@ -86,6 +84,12 @@ namespace Game.Scripts.View
             _img_background.enabled = true;
         }
 
+        void OnValidate()
+        {
+            SetState(_currentState);
+        }
+
+        [Serializable]
         public enum State
         {
             UNKNOWN,
@@ -93,40 +97,5 @@ namespace Game.Scripts.View
             AVAILABLE,
             UNAVAILABLE
         }
-
-        #region ------------------------- tool
-#if UNITY_EDITOR
-        [CustomEditor(typeof(InventoryItemWidget))]
-        public class InventoryItemWidgetEditor : Editor
-        {
-            InventoryItemWidget script;
-
-            void OnEnable()
-            {
-                script = (InventoryItemWidget)target;
-            }
-
-            public override void OnInspectorGUI()
-            {
-                if (Application.isPlaying)
-                    DrawTool();
-
-                base.OnInspectorGUI();
-            }
-
-            void DrawTool()
-            {
-                EditorGUILayout.LabelField("Tool:");
-
-                State state = (State)EditorGUILayout.EnumPopup("State", script._currentState);
-                if (script._currentState != state)
-                {
-                    script._currentState = state;
-                    script.SetState(state);
-                }
-            }
-        }
-#endif
-        #endregion ------------------------- tool
     }
 }
