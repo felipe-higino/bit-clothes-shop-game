@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d14fc4c76441a6976ef336b8d4dbbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sfx: {fileID: 8261330021267436242}
+  _sfxSource: {fileID: 8261330021267436242}
 --- !u!82 &8261330021267436242
 AudioSource:
   m_ObjectHideFlags: 0

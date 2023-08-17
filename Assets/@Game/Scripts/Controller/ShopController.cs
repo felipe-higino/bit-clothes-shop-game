@@ -10,13 +10,20 @@ namespace Game.Scripts.Controller
 {
     public class ShopController : MonoBehaviour
     {
+        [Header("--- model ---")]
         [SerializeField] SO_Store _storeSettings;
+
+        [Header("--- view ---")]
         [SerializeField] GroupSelector _storeItemsContainer;
         [SerializeField] PurchaseWidget _purchaseWidgetPrefab;
+        [Space]
         [SerializeField] Image _img_itemPreview;
         [SerializeField] TMP_Text _txt_price;
         [SerializeField] Button _btn_purchase;
         [SerializeField] TMP_Text _txt_cash;
+        [Space]
+        [SerializeField] AudioClip _sfx_successPurchase;
+        [SerializeField] AudioClip _sfx_failPurchase;
 
         readonly Dictionary<GroupSelector.ISelectable, StoreItem> _selectableStores = new();
         readonly Dictionary<StoreItem, Sprite> _storeSprites = new();
@@ -72,7 +79,19 @@ namespace Game.Scripts.Controller
 
         void OnClickPurchase()
         {
-            Service<PurchaseController>.Get().Purchase();
+            Service<PurchaseController>.Get().Purchase(
+                success: OnPurchaseSuccess,
+                fail: OnPurchaseFail);
+        }
+
+        void OnPurchaseSuccess()
+        {
+            AudioController.Instance.PlaySFX(_sfx_successPurchase);
+        }
+
+        void OnPurchaseFail()
+        {
+            AudioController.Instance.PlaySFX(_sfx_failPurchase);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Game.Scripts.Controller
             GameObject.Instantiate(cursorManagerPrefab, root.transform);
 
             AudioController audioControllerPrefab = Resources.Load<AudioController>("AudioController");
-            // GameObject.Instantiate(audioControllerPrefab, root.transform);
+            GameObject.Instantiate(audioControllerPrefab, root.transform);
 
             GameObject terminalPrefab = Resources.Load<GameObject>("Terminal");
             GameObject.Instantiate(terminalPrefab, root.transform);

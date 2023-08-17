@@ -3,8 +3,9 @@ namespace Game.Scripts.Controller
 {
     public class AudioController : MonoBehaviour
     {
-        [SerializeField] AudioSource _sfx;
         public static AudioController Instance { get; private set; }
+
+        [SerializeField] AudioSource _sfxSource;
 
         void Awake()
         {
@@ -19,7 +20,7 @@ namespace Game.Scripts.Controller
 
         public void PlaySFX(AudioClip clip)
         {
-            _sfx.PlayOneShot(clip);
+            _sfxSource.PlayOneShot(clip);
         }
     }
 }
