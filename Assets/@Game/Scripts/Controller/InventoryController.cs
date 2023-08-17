@@ -9,6 +9,7 @@ namespace Game.Scripts.Controller
     public class InventoryController : MonoBehaviour
     {
         [SerializeField] InventoryItemWidget _inventoryWidgetPrefab;
+        [SerializeField] InventoryItemWidget _defaultSet;
         [SerializeField] Transform _inventoryItemsParent;
         [SerializeField] Image _img_equippedSet;
         [SerializeField] GroupSelector _inventoryGroupSelector;
@@ -18,6 +19,10 @@ namespace Game.Scripts.Controller
 
         void Awake()
         {
+            _inventoryGroupSelector.OnChangeSelected += OnChangeSelected;
+            _defaultSet.OnSelectThis += OnSelectDefaultSet;
+            _inventoryGroupSelector.AddSelectable(_defaultSet);
+
             DatabusInventory inventory = Service<DatabusInventory>.Get();
 
             inventory.inventoryItems
@@ -62,23 +67,30 @@ namespace Game.Scripts.Controller
                 .ObserveOnMainThread()
                 .Subscribe(equippedItem =>
                 {
-                    Sprite sprite;
                     if (null == equippedItem)
-                        sprite = "default".SpriteFromItemName();
+                    {
+                        Sprite sprite = "default".SpriteFromItemName();
+                        _defaultSet.SelectThis();
+                        _img_equippedSet.sprite = sprite;
+                    }
                     else
-                        sprite = equippedItem.itemName.SpriteFromItemName();
-
-                    _img_equippedSet.sprite = sprite;
+                    {
+                        Sprite sprite = equippedItem.itemName.SpriteFromItemName();
+                        _img_equippedSet.sprite = sprite;
+                    }
                 })
                 .AddTo(this);
-
-            OnChangeSelected(_inventoryGroupSelector.CurrentSelected);
-            _inventoryGroupSelector.OnChangeSelected += OnChangeSelected;
         }
 
         void OnDestroy()
         {
             _inventoryGroupSelector.OnChangeSelected -= OnChangeSelected;
+            _defaultSet.OnSelectThis -= OnSelectDefaultSet;
+        }
+
+        void OnSelectDefaultSet(GroupSelector.ISelectable _)
+        {
+            Service<DatabusInventory>.Get().EquippedItem = null;
         }
 
         void OnChangeSelected(GroupSelector.ISelectable selected)

@@ -43,9 +43,6 @@ namespace Game.Scripts.View
 
         void GroupSelector.ISelectable.OnSelectedChange(bool isSelected)
         {
-            if (_currentState == State.EMPTY)
-                return;
-
             if (isSelected)
                 StateUnavailable();
             else
