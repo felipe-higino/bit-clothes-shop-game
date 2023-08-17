@@ -920,6 +920,7 @@ MonoBehaviour:
   _img_itemPreview: {fileID: 1963134302}
   _txt_price: {fileID: 791075366}
   _btn_purchase: {fileID: 1408780985}
+  _txt_cash: {fileID: 1524195277}
 --- !u!1 &548198440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,7 +1514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed80bd7fc8c8cdb47b2b9338a2d1d309, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 2aed2a23605cc44418038c91167a4ed8, type: 2}

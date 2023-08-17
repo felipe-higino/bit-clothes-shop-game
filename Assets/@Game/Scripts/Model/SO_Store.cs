@@ -10,11 +10,11 @@ namespace Game.Scripts.Model
 {
     public class SO_Store : ScriptableObject
     {
-        public Store[] storeItems;
+        public StoreItem[] storeItems;
     }
 
     [Serializable]
-    public class Store
+    public class StoreItem
     {
         public string itemName;
         public int price;
@@ -36,12 +36,12 @@ namespace Game.Scripts.Model
             string text = File.ReadAllText(ctx.assetPath);
             string[] lines = text.Split('\n');
 
-            List<Store> storeList = new();
+            List<StoreItem> storeList = new();
             for (int i = 1; i < lines.Length; i++)
             {
                 string line = lines[i];
                 string[] data = line.Split(',');
-                Store row = new()
+                StoreItem row = new()
                 {
                     itemName = data[0],
                     price = int.Parse(data[1], CultureInfo.InvariantCulture),

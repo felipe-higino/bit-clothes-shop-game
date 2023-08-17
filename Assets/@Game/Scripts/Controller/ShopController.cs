@@ -3,6 +3,7 @@ using Game.Scripts.View;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 namespace Game.Scripts.Controller
@@ -15,15 +16,21 @@ namespace Game.Scripts.Controller
         [SerializeField] Image _img_itemPreview;
         [SerializeField] TMP_Text _txt_price;
         [SerializeField] Button _btn_purchase;
+        [SerializeField] TMP_Text _txt_cash;
 
-        readonly Dictionary<GroupSelector.ISelectable, Store> _selectableStores = new();
-        readonly Dictionary<Store, Sprite> _storeSprites = new();
+        readonly Dictionary<GroupSelector.ISelectable, StoreItem> _selectableStores = new();
+        readonly Dictionary<StoreItem, Sprite> _storeSprites = new();
 
         const string resources = "Store/Items/{0}";
 
         void Awake()
         {
-            foreach (Store storeItem in _storeSettings.storeItems)
+            Service<DatabusInventory>.Get().cashReactive
+                .ObserveOnMainThread()
+                .Subscribe(value => _txt_cash.text = value.ToString())
+                .AddTo(this);
+
+            foreach (StoreItem storeItem in _storeSettings.storeItems)
             {
                 // weapons not supported yet
                 if (storeItem.itemType != ItemType.SET)
@@ -54,8 +61,10 @@ namespace Game.Scripts.Controller
 
         void OnChangeSelectedItem(GroupSelector.ISelectable selected)
         {
-            Store storeItem = _selectableStores[selected];
+            StoreItem storeItem = _selectableStores[selected];
             Sprite sprite = _storeSprites[storeItem];
+
+            Service<DatabusStore>.Get().SelectedItem = storeItem;
 
             _img_itemPreview.sprite = sprite;
             _txt_price.text = storeItem.price.ToString();
