@@ -237,13 +237,13 @@ TextureImporter:
       name: GUI_2x_12
       rect:
         serializedVersion: 2
-        x: 81
+        x: 80
         y: 32
-        width: 47
+        width: 48
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 5, y: 6, z: 6, w: 6}
+      border: {x: 6, y: 6, z: 6, w: 6}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -347,7 +347,7 @@ TextureImporter:
         width: 44
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 12, y: 0, z: 12, w: 0}
       outline: []
       physicsShape: []
@@ -355,6 +355,48 @@ TextureImporter:
       bones: []
       spriteID: 07a1ce676cbaa704fb8a4d8b3209a612
       internalID: -1799953705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI_2x_4
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 64
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a8332f10a4362f44a8c28fdf376b8db
+      internalID: -1546505253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI_2x_5
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6140efee6242ff498d8c778763b7f6d
+      internalID: -440149626
       vertices: []
       indices: 
       edges: []
