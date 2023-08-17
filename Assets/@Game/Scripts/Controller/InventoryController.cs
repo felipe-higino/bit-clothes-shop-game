@@ -44,7 +44,7 @@ namespace Game.Scripts.Controller
                     if (null != value)
                     {
                         //TODO: change to a pool approach
-                        Destroy(value);
+                        Destroy(value.gameObject);
                     }
                 })
                 .AddTo(this);
