@@ -3,7 +3,7 @@ namespace Game.Scripts.Controller
 {
     public static class DomainConversion
     {
-        const string itemIcons = "Store/Items/{0}";
+        const string itemIcons = "Sets/{0}";
 
         public static Sprite SpriteFromItemName(this string itemName)
         {

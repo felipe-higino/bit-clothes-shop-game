@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -7,13 +8,17 @@ using UnityEditor;
 
 namespace Game.Scripts.View
 {
-    public class InventoryItemWidget : MonoBehaviour
+    public class InventoryItemWidget : MonoBehaviour, GroupSelector.ISelectable, IPointerClickHandler
     {
         [SerializeField] ButtonMultiImage _buttonMultiImage;
         [SerializeField] CursorHover _cursorHover;
         [SerializeField] Image _img_background;
         [SerializeField] Image _img_icon;
         [SerializeField] Image _img_locker;
+
+        State _currentState = State.UNKNOWN;
+
+        public Action<GroupSelector.ISelectable> OnSelectThis { get; set; }
 
         public void SetState(State state)
         {
@@ -36,6 +41,22 @@ namespace Game.Scripts.View
         public void SetIcon(Sprite icon)
         {
             _img_icon.sprite = icon;
+        }
+
+        void GroupSelector.ISelectable.OnSelectedChange(bool isSelected)
+        {
+            if (_currentState == State.EMPTY)
+                return;
+
+            if (isSelected)
+                StateUnavailable();
+            else
+                StateAvailable();
+        }
+
+        void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+        {
+            OnSelectThis?.Invoke(this);
         }
 
         void StateEmpty()
@@ -75,8 +96,6 @@ namespace Game.Scripts.View
 
         #region ------------------------- tool
 #if UNITY_EDITOR
-        State EDITOR_state = State.UNKNOWN;
-
         [CustomEditor(typeof(InventoryItemWidget))]
         public class InventoryItemWidgetEditor : Editor
         {
@@ -99,10 +118,10 @@ namespace Game.Scripts.View
             {
                 EditorGUILayout.LabelField("Tool:");
 
-                State state = (State)EditorGUILayout.EnumPopup("State", script.EDITOR_state);
-                if (script.EDITOR_state != state)
+                State state = (State)EditorGUILayout.EnumPopup("State", script._currentState);
+                if (script._currentState != state)
                 {
-                    script.EDITOR_state = state;
+                    script._currentState = state;
                     script.SetState(state);
                 }
             }

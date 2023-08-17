@@ -10,7 +10,7 @@ namespace Game.Scripts.Tools
 
         void Awake()
         {
-            _Inventory.cash = 5000;
+            _Inventory.Cash = 5000;
         }
     }
 }

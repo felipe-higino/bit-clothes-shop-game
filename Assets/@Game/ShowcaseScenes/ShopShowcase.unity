@@ -873,6 +873,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryWidgetPrefab: {fileID: 5076095388265210494, guid: a48bd429fdefad94291f68bcdfe30b8a, type: 3}
   _inventoryItemsParent: {fileID: 756552085}
+  _img_equippedSet: {fileID: 922209580}
+  _inventoryGroupSelector: {fileID: 756552088}
 --- !u!1 &262767636
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,13 +982,14 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1181674796}
+  - {fileID: 922209579}
   m_Father: {fileID: 1650039604}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -210, y: 68}
-  m_SizeDelta: {x: 250, y: 250}
+  m_AnchoredPosition: {x: -177, y: -74}
+  m_SizeDelta: {x: 220.8901, y: 81.5785}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &279667437
 MonoBehaviour:
@@ -1573,6 +1576,7 @@ GameObject:
   - component: {fileID: 756552085}
   - component: {fileID: 756552087}
   - component: {fileID: 756552086}
+  - component: {fileID: 756552088}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1638,6 +1642,19 @@ MonoBehaviour:
   m_Spacing: {x: 32, y: 32}
   m_Constraint: 1
   m_ConstraintCount: 2
+--- !u!114 &756552088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756552084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f95742295260e5459bd61d545889960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isInitOnStart: 0
 --- !u!1 &776259812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,6 +1730,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776259812}
+  m_CullTransparentMesh: 1
+--- !u!1 &922209578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 922209579}
+  - component: {fileID: 922209581}
+  - component: {fileID: 922209580}
+  m_Layer: 5
+  m_Name: <img>current-equipped
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &922209579
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922209578}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 279667436}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000011444, y: 84}
+  m_SizeDelta: {x: 429.1099, y: 429.1099}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &922209580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922209578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ce458d9c2fbf70c47b525030089098b2, type: 2}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 2
+--- !u!222 &922209581
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922209578}
   m_CullTransparentMesh: 1
 --- !u!1 &946482754
 GameObject:

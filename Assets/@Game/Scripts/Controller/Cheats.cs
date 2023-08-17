@@ -8,13 +8,13 @@ namespace Game.Scripts.Controller
         [RegisterCommand(Name = "cs2000", Help = "Gives 2000 cash", MinArgCount = 0, MaxArgCount = 0)]
         static void GiveCash(CommandArg[] args)
         {
-            Service<DatabusInventory>.Get().cash += 2000;
+            Service<DatabusInventory>.Get().Cash += 2000;
         }
 
         [RegisterCommand(Name = "cs100", Help = "Removes 4100 cash", MinArgCount = 0, MaxArgCount = 0)]
         static void RemoveCash(CommandArg[] args)
         {
-            Service<DatabusInventory>.Get().cash -= 100;
+            Service<DatabusInventory>.Get().Cash -= 100;
         }
 
         [RegisterCommand(Name = "clrinv", Help = "Clears inventory", MinArgCount = 0, MaxArgCount = 0)]

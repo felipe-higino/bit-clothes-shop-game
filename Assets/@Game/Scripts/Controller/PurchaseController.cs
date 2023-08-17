@@ -10,13 +10,13 @@ namespace Game.Scripts.Controller
             DatabusStore store = Service<DatabusStore>.Get();
             StoreItem itemToPurchase = store.SelectedItem;
 
-            if (inventory.cash < itemToPurchase.price)
+            if (inventory.Cash < itemToPurchase.price)
             {
                 fail?.Invoke();
                 return;
             }
 
-            inventory.cash -= itemToPurchase.price;
+            inventory.Cash -= itemToPurchase.price;
             inventory.inventoryItems.Add(new InventoryItem()
             {
                 itemName = itemToPurchase.itemName

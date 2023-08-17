@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 namespace Game.Scripts.View
 {
@@ -8,7 +9,7 @@ namespace Game.Scripts.View
 
         [SerializeField] bool _isInitOnStart;
 
-        ISelectable[] _selectables;
+        readonly List<ISelectable> _selectables = new();
 
         public ISelectable CurrentSelected { get; private set; }
 
@@ -20,12 +21,27 @@ namespace Game.Scripts.View
 
         public void Init()
         {
-            _selectables = GetComponentsInChildren<ISelectable>();
+            ISelectable[] selectables = GetComponentsInChildren<ISelectable>();
+            _selectables.AddRange(selectables);
             foreach (ISelectable selectable in _selectables)
             {
                 selectable.OnSelectThis += SelectThisSelectable;
                 selectable.OnSelectedChange(false);
             }
+        }
+
+        public void AddSelectable(ISelectable selectable)
+        {
+            _selectables.Add(selectable);
+            selectable.OnSelectThis += SelectThisSelectable;
+            selectable.OnSelectedChange(false);
+        }
+
+        public void RemoveSelectable(ISelectable selectable)
+        {
+            _selectables.Remove(selectable);
+            selectable.OnSelectThis -= SelectThisSelectable;
+            selectable.OnSelectedChange(false);
         }
 
         void SelectThisSelectable(ISelectable clicked)
