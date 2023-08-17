@@ -18,19 +18,15 @@ namespace Game.Scripts.View
         bool _isCursorDown;
         public static CursorManager Instance { get; private set; }
 
+        void Awake()
+        {
+            Instance = this;
+        }
+
         void Update()
         {
             _isCursorDown = Input.GetMouseButton(0);
             UpdateCursorState();
-        }
-
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-        static void Init()
-        {
-            CursorManager managerPrefab = Resources.Load<CursorManager>("CursorManager");
-            CursorManager managerInstance = Instantiate(managerPrefab);
-            DontDestroyOnLoad(managerInstance);
-            Instance = managerInstance;
         }
 
         void UpdateCursorState()
