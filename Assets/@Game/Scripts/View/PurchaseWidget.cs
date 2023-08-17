@@ -7,7 +7,7 @@ namespace Game.Scripts.View
 {
     public class PurchaseWidget : MonoBehaviour, GroupSelector.ISelectable, IPointerClickHandler
     {
-        public event Action<GroupSelector.ISelectable> OnClick;
+        public Action<GroupSelector.ISelectable> OnSelectThis { get; set; }
 
         [SerializeField] Image _arrow;
         [SerializeField] Image _img_icon;
@@ -15,10 +15,10 @@ namespace Game.Scripts.View
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
-            OnClick?.Invoke(this);
+            OnSelectThis?.Invoke(this);
         }
 
-        void GroupSelector.ISelectable.NotifyIsSelected(bool isSelected)
+        void GroupSelector.ISelectable.OnSelectedChange(bool isSelected)
         {
             _arrow.enabled = isSelected;
         }

@@ -23,32 +23,41 @@ namespace Game.Scripts.View
             _selectables = GetComponentsInChildren<ISelectable>();
             foreach (ISelectable selectable in _selectables)
             {
-                selectable.OnClick += OnClickSelectable;
-                selectable.NotifyIsSelected(false);
+                selectable.OnSelectThis += SelectThisSelectable;
+                selectable.OnSelectedChange(false);
             }
         }
 
-        void OnClickSelectable(ISelectable clicked)
+        void SelectThisSelectable(ISelectable clicked)
         {
             foreach (ISelectable selectable in _selectables)
             {
                 if (selectable == clicked)
                 {
-                    selectable.NotifyIsSelected(true);
+                    selectable.OnSelectedChange(true);
                     CurrentSelected = clicked;
                     OnChangeSelected?.Invoke(clicked);
                 }
                 else
                 {
-                    selectable.NotifyIsSelected(false);
+                    selectable.OnSelectedChange(false);
                 }
             }
         }
 
         public interface ISelectable
         {
-            public event Action<ISelectable> OnClick;
-            public void NotifyIsSelected(bool isSelected);
+            public Action<ISelectable> OnSelectThis { get; set; }
+            public void OnSelectedChange(bool isSelected);
+        }
+
+    }
+
+    public static class ISelectableExtensions
+    {
+        public static void SelectThis(this GroupSelector.ISelectable selectable)
+        {
+            selectable.OnSelectThis?.Invoke(selectable);
         }
     }
 

@@ -917,6 +917,7 @@ MonoBehaviour:
   _storeSettings: {fileID: -5667868109919610320, guid: faa7a6052a01daf4da09f175e97fe705, type: 3}
   _storeItemsContainer: {fileID: 484939519}
   _purchaseWidgetPrefab: {fileID: 7378756805927567756, guid: 3b718a9b2352c274cb2aac4cfd55414d, type: 3}
+  _img_itemPreview: {fileID: 1963134302}
 --- !u!1 &548198440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,7 +2585,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1811061161, guid: 4ec156918a0007a468ef26abc9dfbe25, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dcaceabec9fcf0b41a812a0abfd3f7b9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
