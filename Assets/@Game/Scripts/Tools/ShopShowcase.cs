@@ -3,7 +3,7 @@ using Game.Scripts.Model;
 using UnityEngine;
 namespace Game.Scripts.Tools
 {
-    public class InventoryShowcase : MonoBehaviour
+    public class ShopShowcase : MonoBehaviour
     {
         DatabusInventory _Inventory =>
             Service<DatabusInventory>.Get();
