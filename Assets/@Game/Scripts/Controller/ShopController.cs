@@ -26,8 +26,6 @@ namespace Game.Scripts.Controller
         readonly Dictionary<GroupSelector.ISelectable, StoreItem> _selectableStores = new();
         readonly Dictionary<StoreItem, Sprite> _storeSprites = new();
 
-        const string resources = "Store/Items/{0}";
-
         void Awake()
         {
             foreach (StoreItem storeItem in _storeSettings.storeItems)
@@ -39,7 +37,7 @@ namespace Game.Scripts.Controller
                 PurchaseWidget widgetInstance = Instantiate(_purchaseWidgetPrefab, _storeItemsContainer.transform);
                 widgetInstance.SetItemName(storeItem.itemName);
 
-                Sprite sprite = Resources.Load<Sprite>(string.Format(resources, storeItem.itemName));
+                Sprite sprite = storeItem.itemName.SpriteFromItemName();
                 widgetInstance.SetItemIcon(sprite);
 
                 _selectableStores.Add(widgetInstance, storeItem);
