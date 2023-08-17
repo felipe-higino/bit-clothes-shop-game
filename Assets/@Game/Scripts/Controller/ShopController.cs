@@ -3,7 +3,6 @@ using Game.Scripts.View;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 namespace Game.Scripts.Controller
@@ -20,7 +19,6 @@ namespace Game.Scripts.Controller
         [SerializeField] Image _img_itemPreview;
         [SerializeField] TMP_Text _txt_price;
         [SerializeField] Button _btn_purchase;
-        [SerializeField] TMP_Text _txt_cash;
         [Space]
         [SerializeField] AudioClip _sfx_successPurchase;
         [SerializeField] AudioClip _sfx_failPurchase;
@@ -32,11 +30,6 @@ namespace Game.Scripts.Controller
 
         void Awake()
         {
-            Service<DatabusInventory>.Get().cashReactive
-                .ObserveOnMainThread()
-                .Subscribe(value => _txt_cash.text = value.ToString())
-                .AddTo(this);
-
             foreach (StoreItem storeItem in _storeSettings.storeItems)
             {
                 // weapons not supported yet
