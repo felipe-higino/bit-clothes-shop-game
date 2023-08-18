@@ -77,7 +77,7 @@ namespace Game.Scripts.Controller
         {
             if (null == equippedItem)
             {
-                Sprite sprite = "default".SpriteFromItemName();
+                Sprite sprite = DomainConversion.defaultName.SpriteFromItemName();
                 _defaultSet.SelectThis();
                 _img_equippedSet.sprite = sprite;
             }
