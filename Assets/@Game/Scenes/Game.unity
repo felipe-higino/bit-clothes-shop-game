@@ -744,9 +744,9 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.54, y: 1}
   m_EdgeRadius: 0
---- !u!1 &563714335 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2059303401278050784, guid: 8ae026f5f8762784781aca321111e422, type: 3}
+--- !u!223 &563714337 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2059303401278050782, guid: 8ae026f5f8762784781aca321111e422, type: 3}
   m_PrefabInstance: {fileID: 2059303400716568831}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &564969682
@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ccf5252de9f416a81e73d733736e248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionFeedback: {fileID: 563714335}
+  _interactionFeedback: {fileID: 563714337}
 --- !u!1 &1133917324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2936,13 +2936,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2059303401278050782, guid: 8ae026f5f8762784781aca321111e422, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2059303401278050784, guid: 8ae026f5f8762784781aca321111e422, type: 3}
       propertyPath: m_Name
       value: key-e (store)
       objectReference: {fileID: 0}
     - target: {fileID: 2059303401278050784, guid: 8ae026f5f8762784781aca321111e422, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5822568772534662345, guid: 8ae026f5f8762784781aca321111e422, type: 3}
       propertyPath: m_AnchoredPosition.x

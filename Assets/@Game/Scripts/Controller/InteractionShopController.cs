@@ -4,11 +4,16 @@ namespace Game.Scripts.Controller
 {
     public class InteractionShopController : MonoBehaviour, IInteractableCollider
     {
-        [SerializeField] GameObject _interactionFeedback;
+        [SerializeField] Canvas _interactionFeedback;
+
+        void Awake()
+        {
+            _interactionFeedback.enabled = false;
+        }
 
         public void SetIsInteractable(bool isInteractable)
         {
-            _interactionFeedback.SetActive(isInteractable);
+            _interactionFeedback.enabled = isInteractable;
         }
     }
 }
