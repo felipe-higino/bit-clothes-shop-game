@@ -28,6 +28,7 @@ namespace Game.Scripts.Controller
         {
             yield return null;
             yield return null;
+            yield return null;
 
             _initialFade.FadeIn();
 
