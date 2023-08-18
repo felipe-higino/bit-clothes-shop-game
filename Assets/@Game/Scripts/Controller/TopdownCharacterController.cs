@@ -25,10 +25,16 @@ namespace Game.Scripts.Controller
         {
             _rigidbody2D.AddForce(_speed * Time.fixedDeltaTime * _direction);
 
-            if (_rigidbody2D.velocity.magnitude <= 0.01f)
+            Vector2 velocity = _rigidbody2D.velocity;
+            if (Mathf.Abs(_rigidbody2D.velocity.x) <= 0.01f)
             {
-                _rigidbody2D.velocity = Vector2.zero;
+                velocity.x = 0;
             }
+            if (Mathf.Abs(_rigidbody2D.velocity.y) <= 0.01f)
+            {
+                velocity.y = 0;
+            }
+            _rigidbody2D.velocity = velocity;
 
             walkDirection.Value = _rigidbody2D.velocity.normalized;
             walkSpeed.Value = _rigidbody2D.velocity.magnitude;
