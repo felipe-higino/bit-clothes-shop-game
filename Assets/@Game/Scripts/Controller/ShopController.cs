@@ -19,6 +19,7 @@ namespace Game.Scripts.Controller
         [SerializeField] Image _img_itemPreview;
         [SerializeField] TMP_Text _txt_price;
         [SerializeField] Button _btn_purchase;
+        [SerializeField] Button _btn_exit;
         [Space]
         [SerializeField] AudioClip _sfx_successPurchase;
         [SerializeField] AudioClip _sfx_failPurchase;
@@ -49,6 +50,12 @@ namespace Game.Scripts.Controller
             _selectableStores.ElementAt(0).Key.SelectThis();
 
             _btn_purchase.onClick.AddListener(OnClickPurchase);
+            _btn_exit.onClick.AddListener(OnClickExit);
+        }
+
+        void OnClickExit()
+        {
+            Service<DatabusCoreloop>.Get().gameState.Value = DatabusCoreloop.GameState.EXPLORING;
         }
 
         void OnDestroy()

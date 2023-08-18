@@ -9,6 +9,8 @@ namespace Game.Scripts.Controller
 
         void Awake()
         {
+            Service<DatabusInventory>.Get().Cash = 2000;
+
             DatabusCoreloop coreloopDatabus = Service<DatabusCoreloop>.Get();
 
             coreloopDatabus.gameState.Value = DatabusCoreloop.GameState.EXPLORING;
