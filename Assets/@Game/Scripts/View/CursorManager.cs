@@ -5,6 +5,8 @@ namespace Game.Scripts.View
 {
     public class CursorManager : MonoBehaviour
     {
+        public static CursorManager Instance { get; private set; }
+
         static readonly Vector2 _point = new(0f, 1f);
 
         [SerializeField] Texture2D _cursorIdle;
@@ -16,7 +18,7 @@ namespace Game.Scripts.View
 
         bool _isHover;
         bool _isCursorDown;
-        public static CursorManager Instance { get; private set; }
+        CursorState _currentState;
 
         void Awake()
         {
@@ -57,6 +59,9 @@ namespace Game.Scripts.View
 
         void SetCursorState(CursorState state)
         {
+            if (_currentState == state)
+                return;
+
             switch (state)
             {
                 case CursorState.IDLE:
@@ -74,6 +79,8 @@ namespace Game.Scripts.View
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
+
+            _currentState = state;
         }
 
         void UpdateHoverState()

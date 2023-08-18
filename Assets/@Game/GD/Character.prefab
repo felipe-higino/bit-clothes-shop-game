@@ -98,4 +98,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dcd0a9c40bd48ce96875a5873082e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterController: {fileID: 6344891209883747176}
   _animationsDB: {fileID: -5667868109919610320, guid: c58010976ba37684e89b43d0e6489bcd, type: 3}
