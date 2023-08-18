@@ -1,9 +1,11 @@
 ﻿using UniRx;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+// TODO: change to Kinematic Character Controller (KCC)
 namespace Game.Scripts.Controller
 {
-    public class TopdownCharacterController : MonoBehaviour, BitClothesInputActions.IGameplayActions
+    public class TopdownCharacterController : MonoBehaviour
     {
         public readonly ReactiveProperty<Vector2> walkDirection = new();
         public readonly ReactiveProperty<float> walkSpeed = new();
@@ -13,12 +15,14 @@ namespace Game.Scripts.Controller
 
         Vector2 _direction;
 
-        //TODO: change to Kinematic Character Controller (KCC)
         void Awake()
         {
-            BitClothesInputActions actions = new();
-            actions.Gameplay.SetCallbacks(this);
-            actions.Enable();
+            Service<InputController>.Get().actions.Gameplay.Move.performed += OnMove;
+        }
+
+        void OnDestroy()
+        {
+            Service<InputController>.Get().actions.Gameplay.Move.performed -= OnMove;
         }
 
         void FixedUpdate()
@@ -40,7 +44,7 @@ namespace Game.Scripts.Controller
             walkSpeed.Value = _rigidbody2D.velocity.magnitude;
         }
 
-        void BitClothesInputActions.IGameplayActions.OnMove(InputAction.CallbackContext context)
+        void OnMove(InputAction.CallbackContext context)
         {
             _direction = context.ReadValue<Vector2>();
         }
