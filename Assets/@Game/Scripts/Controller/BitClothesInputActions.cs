@@ -37,6 +37,15 @@ namespace Game.Scripts.Controller
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""0feaaea8-a924-4476-80dd-6711cedcecca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -149,6 +158,17 @@ namespace Game.Scripts.Controller
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb7d6372-2e3d-4ae7-904a-576eee12173a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ namespace Game.Scripts.Controller
             // Gameplay
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
             m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+            m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -224,11 +245,13 @@ namespace Game.Scripts.Controller
         private readonly InputActionMap m_Gameplay;
         private IGameplayActions m_GameplayActionsCallbackInterface;
         private readonly InputAction m_Gameplay_Move;
+        private readonly InputAction m_Gameplay_Interact;
         public struct GameplayActions
         {
             private @BitClothesInputActions m_Wrapper;
             public GameplayActions(@BitClothesInputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Gameplay_Move;
+            public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
             public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -241,6 +264,9 @@ namespace Game.Scripts.Controller
                     @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                     @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                     @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                    @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                    @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                    @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 }
                 m_Wrapper.m_GameplayActionsCallbackInterface = instance;
                 if (instance != null)
@@ -248,6 +274,9 @@ namespace Game.Scripts.Controller
                     @Move.started += instance.OnMove;
                     @Move.performed += instance.OnMove;
                     @Move.canceled += instance.OnMove;
+                    @Interact.started += instance.OnInteract;
+                    @Interact.performed += instance.OnInteract;
+                    @Interact.canceled += instance.OnInteract;
                 }
             }
         }
@@ -264,6 +293,7 @@ namespace Game.Scripts.Controller
         public interface IGameplayActions
         {
             void OnMove(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
         }
     }
 }

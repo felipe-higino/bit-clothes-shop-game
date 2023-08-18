@@ -17,12 +17,18 @@ namespace Game.Scripts.Controller
 
         void Awake()
         {
-            Service<InputController>.Get().actions.Gameplay.Move.performed += OnMove;
+            InputController controller = Service<InputController>.Get();
+            controller.actions.Gameplay.Move.started += OnMove;
+            controller.actions.Gameplay.Move.performed += OnMove;
+            controller.actions.Gameplay.Move.canceled += OnMove;
         }
 
         void OnDestroy()
         {
-            Service<InputController>.Get().actions.Gameplay.Move.performed -= OnMove;
+            InputController controller = Service<InputController>.Get();
+            controller.actions.Gameplay.Move.started -= OnMove;
+            controller.actions.Gameplay.Move.performed -= OnMove;
+            controller.actions.Gameplay.Move.canceled -= OnMove;
         }
 
         void FixedUpdate()
